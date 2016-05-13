@@ -26,14 +26,16 @@ var Player = function(id){
 		step:10,
 		
 	}
-	self.updatePosition = function(){
-    //updatePosition
+	self.updatePosition = function(){     //updatePosition
 		if(self.mouseForward == true){			
 				self.x += self.step;
-		self.mouseForward = false;	}							
-			else if (self.mouseBackward == true){			
-				self.x -= self.step;
-			self.mouseBackward = false;		}		
+				//console.log('the player x is ' + self.x);
+				self.mouseForward = false;
+				}							
+					else if (self.mouseBackward == true){			
+						self.x -= self.step;
+						self.mouseBackward = false;
+						}		
 } 
 
 	return self;

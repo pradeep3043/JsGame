@@ -1,20 +1,19 @@
-<canvas id="ctx" width="500" height="500" style="border:1px
+<canvas id="ctx" width="700" height="500" style="border:1px
 solid #000000;"></canvas>
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
 	//console.log('Connected');
 	var ctx = document.getElementById("ctx").getContext("2d");
-	ctx.font = '30px Arial';
+	ctx.font = '50px Arial';
+	
 	var socket = io();
 	
 	socket.on('newPositions',function(data){ //clint listens to server, open chrome console to view
 	ctx.clearRect(0,0,500,500);
 	for(var i=0; i < data.length; i++)
 		ctx.fillText(data[i].number,data[i].x,data[i].y);
-	});
-
-		
+	});		
 	
 
 document.onkeydown = function(event){	
@@ -41,10 +40,25 @@ var back = function(event){
 socket.emit('keyPress',{inputId:'mouseBackward',state:true});
 
 }
+
+var die = function(event){
+
+var dienumber = Math.floor(Math.random() * 6) + 1; 
+texttoshow = dienumber;
+document.getElementById("thetext").innerHTML = texttoshow;
+}
+
+
 socket.emit('keyPress',{inputId:'mouseForward',state:false});
 socket.emit('keyPress',{inputId:'mouseBackward',state:false});	
+
 </script>
+
+
 
 <button onclick="back()">Move one step backwards</button>
 <button onclick="clicked()">Move one step foward</button>
+
+<div id = "thetext"></div>
+<button onclick="die()">Throw the Die</button>
 
