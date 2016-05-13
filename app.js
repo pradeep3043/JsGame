@@ -15,20 +15,27 @@ var PLAYER_LIST = {};
 
 var Player = function(id){
 	var self = {
-		x:250,
+		x:100,
 		y:250,
 		id:id,
 		number:"" + Math.floor(10 * Math.random()),
 		pressingright:false,
 		//mouse:false,
-		mouseAngle:0,
-		speed:10,
+		mouseForward:false,
+		mouseBackward:false,
+		step:10,
+		
 	}
-	self.updatePosition = function(){     //updatePosition
-		if(self.mouseAngle)
-			self.x += self.speed;
-	}
-	
+	self.updatePosition = function(){
+    //updatePosition
+		if(self.mouseForward == true){			
+				self.x += self.step;
+		self.mouseForward = false;	}							
+			else if (self.mouseBackward == true){			
+				self.x -= self.step;
+			self.mouseBackward = false;		}		
+} 
+
 	return self;
 }
 
@@ -48,8 +55,11 @@ io.sockets.on('connection', function(socket){
 	socket.on('keyPress',function(data){
 		if(data.inputId==='right')
 		player.pressingright = data.state;	
-			else if (data.inputId==='mouseAngle')
-				player.mouseAngle = data.state;
+			else if (data.inputId==='mouseForward')
+				player.mouseForward = data.state;
+				//concole.log('received mouse');
+				else if (data.inputId==='mouseBackward')
+				player.mouseBackward = data.state;
 				
 	});
 	
@@ -61,7 +71,7 @@ setInterval(function(){
 	var pack = [];
 		for(var i in PLAYER_LIST){
 			var player = PLAYER_LIST[i];
-			player.updatePosition();
+			player.updatePosition();			
 			pack.push({
 				x:player.x,
 				y:player.y,

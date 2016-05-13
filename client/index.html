@@ -25,13 +25,26 @@ document.onkeyup = function(event){
 	socket.emit('keyPress',{inputId:'right',state:false,});
 	}
 
-document.onmousedown = function(event){
-var x=event.clientX;
-var y=event.clientY;
-var angle = Math.atan2(y,x) / Math.PI * 180;
-socket.emit('keyPress',{inputId:'mouseAngle',state:true});
+var clicked = function(event){	
+//document.onmousedown = function(event){
+//var x=event.clientX;
+//var y=event.clientY;
+//var angle = Math.atan2(y,x) / Math.PI * 180;
+//console.log('the x is ' + x);
+socket.emit('keyPress',{inputId:'mouseForward',state:true});
+//}
+//document.onmouseup = function(event){
+//socket.emit('keyPress',{inputId:'mouseForward',state:false});
+//}
 }
-	
+var back = function(event){
+socket.emit('keyPress',{inputId:'mouseBackward',state:true});
+
+}
+socket.emit('keyPress',{inputId:'mouseForward',state:false});
+socket.emit('keyPress',{inputId:'mouseBackward',state:false});	
 </script>
 
-<button onclick="function()">Question</button>
+<button onclick="back()">Move one step backwards</button>
+<button onclick="clicked()">Move one step foward</button>
+
