@@ -10,20 +10,21 @@ solid #000000;"></canvas>
 	var socket = io();
 	
 	socket.on('newPositions',function(data){ //clint listens to server, open chrome console to view
-	ctx.clearRect(0,0,500,500);
+	ctx.fillStyle="red";
+	//ctx.fillRect(0,0,300,150);
+	ctx.clearRect(0,0,700,500);
 	for(var i=0; i < data.length; i++)
 		ctx.fillText(data[i].number,data[i].x,data[i].y);
+		document.getElementById("ctx").style.backgroundImage = "url('https://www.sideshowtoy.com/photo.php?sku=1000763')";
 	});		
 	
-
-document.onkeydown = function(event){	
+document.onkeydown = function(event){	 		
 	socket.emit('keyPress',{inputId:'right',state:true,});
 	}
 	
 document.onkeyup = function(event){	
 	socket.emit('keyPress',{inputId:'right',state:false,});
 	}
-
 var clicked = function(event){	
 //document.onmousedown = function(event){
 //var x=event.clientX;
@@ -38,20 +39,14 @@ socket.emit('keyPress',{inputId:'mouseForward',state:true});
 }
 var back = function(event){
 socket.emit('keyPress',{inputId:'mouseBackward',state:true});
-
 }
-
 var die = function(event){
-
 var dienumber = Math.floor(Math.random() * 6) + 1; 
 texttoshow = dienumber;
 document.getElementById("thetext").innerHTML = texttoshow;
 }
-
-
 socket.emit('keyPress',{inputId:'mouseForward',state:false});
 socket.emit('keyPress',{inputId:'mouseBackward',state:false});	
-
 </script>
 
 
@@ -61,4 +56,3 @@ socket.emit('keyPress',{inputId:'mouseBackward',state:false});
 
 <div id = "thetext"></div>
 <button onclick="die()">Throw the Die</button>
-
