@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<script src="/js/bootstrap.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+</head>
+<body>
+<canvas id="ctx" width="700" height="500" style="border:1px
+solid #000000;"></canvas>
+
+
+<script>
+	//console.log('Connected');
+	var ctx = document.getElementById("ctx").getContext("2d");
+	ctx.font = '50px Arial';
+	
+	var socket = io();
+	
+	socket.on('newPositions',function(data){ //clint listens to server, open chrome console to view
+	ctx.fillStyle="red";
+	//ctx.fillRect(0,0,300,150);
+	ctx.clearRect(0,0,700,500);
+	for(var i=0; i < data.length; i++)
+		ctx.fillText(data[i].number,data[i].x,data[i].y);
+		document.getElementById("ctx").style.backgroundImage = "url('https://www.sideshowtoy.com/photo.php?sku=1000763')";
+	});		
+	
+document.onkeydown = function(event){	 		
+	socket.emit('keyPress',{inputId:'right',state:true,});
+	}
+	
+document.onkeyup = function(event){	
+	socket.emit('keyPress',{inputId:'right',state:false,});
+	}
+var clicked = function(event){	
+//document.onmousedown = function(event){
+//var x=event.clientX;
+//var y=event.clientY;
+//var angle = Math.atan2(y,x) / Math.PI * 180;
+//console.log('the x is ' + x);
+socket.emit('keyPress',{inputId:'mouseForward',state:true});
+//}
+//document.onmouseup = function(event){
+//socket.emit('keyPress',{inputId:'mouseForward',state:false});
+//}
+}
+var back = function(event){
+socket.emit('keyPress',{inputId:'mouseBackward',state:true});
+}
+var die = function(event){
+var dienumber = Math.floor(Math.random() * 6) + 1; 
+texttoshow = dienumber;
+document.getElementById("thetext").innerHTML = texttoshow;
+}
+socket.emit('keyPress',{inputId:'mouseForward',state:false});
+socket.emit('keyPress',{inputId:'mouseBackward',state:false});	
+</script>
+
+
+
+<button class="btn btn-default" onclick="back()">Move one step backwards</button>
+<button class="btn btn-default" onclick="clicked()">Move one step foward</button>
+
+<div id = "thetext"></div>
+<button class="btn btn-default" onclick="die()">Throw the Die</button>
+</body>
+
+</html>

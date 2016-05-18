@@ -2,13 +2,28 @@ var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
 
-app.get('/', function(req,res){
-	res.sendFile(__dirname + '/client/index.html');
-	
+app.use(express.static(__dirname + '/client'));
+app.use("/css", express.static(__dirname + '/client'));
+app.use("/js", express.static(__dirname + '/client'));
+app.use("/img", express.static(__dirname + '/client'));
+//app.use(express.static('client'));	
+
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/client/index.html');
 });
-app.use('/clent',express.static(__dirname + '/client'));
+
+
+app.get('/board', function(req, res) {
+    res.sendFile(__dirname + '/client/board.html');
+});
+
+
+
+
 serv.listen(2000);
 console.log("Server Started.");
+
+
 
 var SOCKET_LIST = {};
 var PLAYER_LIST = {};

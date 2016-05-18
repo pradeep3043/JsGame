@@ -1,31 +1,77 @@
-<canvas id="ctx" width="700" height="500" style="border:1px
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<script src="/js/jquery-2.2.3.js"></script>
+<script src="/js/work.js"></script>
+<script src="/js/bootstrap.js"></script>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/avatarselection.css">
+<script type="text/javascript">
+  var myDataRef = new Firebase('https://luminous-torch-7239.firebaseio.com/');
+  </script>
+</head>
+<body class=".container-fluid bg-color">
+<nav class="bg-color"></nav>
+
+<section class="wrapper" style="display: hidden">
+  <ul class="tabs">
+    <li class="active">Select an Avatar</li>
+  </ul>
+
+  <ul class="tab__content">
+    <li class="active" >
+      <div class="content__wrapper">
+        <h2 class="text-color">Pick a color</h2>
+        
+        <ul class="colors">
+          <li data-color="#2ecc71"></li>
+          <li data-color="#D64A4B"></li>
+          <li data-color="#8e44ad"></li>
+          <li class="active-color" data-color="#46a1de"></li>
+          <li data-color="#bdc3c7"></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+
+
+<!-- <canvas id="ctx" width="700" height="500" style="border:1px
 solid #000000;"></canvas>
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
 <script>
-	//console.log('Connected');
-	var ctx = document.getElementById("ctx").getContext("2d");
-	ctx.font = '50px Arial';
-	
-	var socket = io();
-	
-	socket.on('newPositions',function(data){ //clint listens to server, open chrome console to view
-	ctx.fillStyle="red";
-	//ctx.fillRect(0,0,300,150);
-	ctx.clearRect(0,0,700,500);
-	for(var i=0; i < data.length; i++)
-		ctx.fillText(data[i].number,data[i].x,data[i].y);
-		document.getElementById("ctx").style.backgroundImage = "url('https://www.sideshowtoy.com/photo.php?sku=1000763')";
-	});		
-	
-document.onkeydown = function(event){	 		
-	socket.emit('keyPress',{inputId:'right',state:true,});
-	}
-	
-document.onkeyup = function(event){	
-	socket.emit('keyPress',{inputId:'right',state:false,});
-	}
-var clicked = function(event){	
+  //console.log('Connected');
+  var ctx = document.getElementById("ctx").getContext("2d");
+  ctx.font = '50px Arial';
+  
+  var socket = io();
+  
+  socket.on('newPositions',function(data){ //clint listens to server, open chrome console to view
+  ctx.fillStyle="red";
+  //ctx.fillRect(0,0,300,150);
+  ctx.clearRect(0,0,700,500);
+  for(var i=0; i < data.length; i++)
+    ctx.fillText(data[i].number,data[i].x,data[i].y);
+    document.getElementById("ctx").style.backgroundImage = "url('https://www.sideshowtoy.com/photo.php?sku=1000763')";
+  });   
+  
+document.onkeydown = function(event){     
+  socket.emit('keyPress',{inputId:'right',state:true,});
+  }
+  
+document.onkeyup = function(event){ 
+  socket.emit('keyPress',{inputId:'right',state:false,});
+  }
+var clicked = function(event){  
 //document.onmousedown = function(event){
 //var x=event.clientX;
 //var y=event.clientY;
@@ -46,13 +92,16 @@ texttoshow = dienumber;
 document.getElementById("thetext").innerHTML = texttoshow;
 }
 socket.emit('keyPress',{inputId:'mouseForward',state:false});
-socket.emit('keyPress',{inputId:'mouseBackward',state:false});	
+socket.emit('keyPress',{inputId:'mouseBackward',state:false});  
 </script>
 
 
 
-<button onclick="back()">Move one step backwards</button>
-<button onclick="clicked()">Move one step foward</button>
+<button class="btn btn-default" onclick="back()">Move one step backwards</button>
+<button class="btn btn-default" onclick="clicked()">Move one step foward</button>
 
 <div id = "thetext"></div>
-<button onclick="die()">Throw the Die</button>
+<button class="btn btn-default" onclick="die()">Throw the Die</button> -->
+</body>
+
+</html>
