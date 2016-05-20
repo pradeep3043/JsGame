@@ -27,8 +27,7 @@ $(document).ready(function(){
       // update new active tab
       activeTab = $(".tab__content > .active");      
       // Update variable
-      activeTabHeight = activeTab.outerHeight();
-      
+      activeTabHeight = activeTab.outerHeight();      
       // Animate height of wrapper to new tab height
       tabWrapper.stop().delay(50).animate({
         height: activeTabHeight
@@ -50,14 +49,14 @@ $(document).ready(function(){
     var newColor = $(this).attr("data-color");
     //Send the color to the server
     //var myColorData = new Firebase('https://luminous-torch-7239.firebaseio.com/');
-    var avatar = $(this).attr("data-color");
+    //var avatar = $(this).attr("data-color");
   //   myColorData.set({  //     player: {
   //   avatar: avatar,
   //   name: "Alan Turing"
   // }      
   //   });
 
-    console.log(avatar);    
+    console.log(newColor);    
     // Change background of everything with class .bg-color
     $(".bg-color").css("background-color", newColor);
     

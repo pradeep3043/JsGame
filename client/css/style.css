@@ -1,0 +1,104 @@
+.nickname {
+  osition: relative;
+  margin: 50px auto;
+/*  width: 280px;
+*/  padding: 33px 25px 0;
+  /*background: white;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+}
+.nickname:before, .nickname:after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  height: 10px;
+/*  background: inherit;
+  border-bottom: 1px solid #d2d2d2;
+  border-radius: 4px; */
+}
+.nickname:after {
+  bottom: 3px;
+  border-color: #dcdcdc;
+}
+
+input {
+  font-family: inherit;
+  color: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.nicknameinput {
+    width: 100%;
+    height: 50px !important;
+    margin-bottom: 25px !important;
+    padding: 0 15px 2px !important;
+    font-size: 17px !important;
+    background: white;
+    border: 2px solid #ebebeb !important;
+    border-radius: 4px !important;
+    -webkit-box-shadow: inset 0 -2px #ebebeb;
+    box-shadow: inset 0 -2px #ebebeb !important;
+    line-height: 48px !important;
+}
+.nicknameinput:focus {
+  border-color: #62c2e4;
+  outline: none;
+  -webkit-box-shadow: inset 0 -2px #62c2e4;
+  box-shadow: inset 0 -2px #62c2e4;
+}
+.startbutton {
+  position: relative;
+  vertical-align: top;
+  width: 100% !important;
+  height: 54px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #f0776c;
+  border: 0;
+  border-bottom: 2px solid #d76b60;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #d76b60;
+  box-shadow: inset 0 -2px #d76b60;
+}
+.startbutton:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+:-moz-placeholder {
+  color: #ccc;
+  font-weight: 300;
+}
+
+::-moz-placeholder {
+  color: #ccc;
+  opacity: 1;
+  font-weight: 300;
+}
+
+::-webkit-input-placeholder {
+  color: #ccc;
+  font-weight: 300;
+}
+
+:-ms-input-placeholder {
+  color: #ccc;
+  font-weight: 300;
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}

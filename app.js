@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
 
+var otherFile = require('./getavatar.js')
+
+
 app.use(express.static(__dirname + '/client'));
 app.use("/css", express.static(__dirname + '/client'));
 app.use("/js", express.static(__dirname + '/client'));
@@ -17,8 +20,7 @@ app.get('/board', function(req, res) {
     res.sendFile(__dirname + '/client/board.html');
 });
 
-
-
+otherFile.createPlayer();
 
 serv.listen(2000);
 console.log("Server Started.");
@@ -109,21 +111,21 @@ setInterval(function(){
 },1000/25); // this will be called every 40msec
 
 
-var Syncano = require('syncano');
-var connection = Syncano({apiKey: 'aec2a9da920992adbe58151a9b4ab47edf4195cb',
-                          userKey: '01c8b17e74f29b92f4f5413ecde5986cbae1349a', 
-                          defaults: { 
-                                      instanceName: "interactiveboard", 
-                                      className: "players"
-                                    }
-                         });
+// var Syncano = require('syncano');
+// var connection = Syncano({apiKey: 'aec2a9da920992adbe58151a9b4ab47edf4195cb',
+//                           userKey: '01c8b17e74f29b92f4f5413ecde5986cbae1349a', 
+//                           defaults: { 
+//                                       instanceName: "interactiveboard", 
+//                                       className: "players"
+//                                     }
+//                          });
 
-var DataObject = connection.DataObject;
+// var DataObject = connection.DataObject;
 
-var dataObject = {
-  avatar: "Yobab", 
-  nickname: "Rivia",
-  email:"xamam@gmamal"
-};
+// var dataObject = {
+//   avatar: "Yobab", 
+//   nickname: "Rivia",
+//   email:"xamam@gmamal"
+// };
 
-DataObject.please().create(dataObject).then();
+// DataObject.please().create(dataObject).then();
