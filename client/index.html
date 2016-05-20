@@ -8,18 +8,22 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src="//cdn.jsdelivr.net/syncanojs/1.0.5/syncano.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/css/avatarselection.css">
 <script type="text/javascript">
-  var myDataRef = new Firebase('https://luminous-torch-7239.firebaseio.com/');
+  //var myDataRef = new Firebase('https://luminous-torch-7239.firebaseio.com/');
   </script>
 </head>
+<body>
+
 <body class=".container-fluid bg-color">
 <nav class="bg-color"></nav>
 
-<section class="wrapper" style="display: hidden">
+<section class="wrapper">
   <ul class="tabs">
     <li class="active">Select an Avatar</li>
   </ul>
@@ -27,8 +31,7 @@
   <ul class="tab__content">
     <li class="active" >
       <div class="content__wrapper">
-        <h2 class="text-color">Pick a color</h2>
-        
+        <h2 class="text-color">Pick a color</h2>        
         <ul class="colors">
           <li data-color="#2ecc71"></li>
           <li data-color="#D64A4B"></li>
